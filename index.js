@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Comment from './src/comment.js'
 import './css/layout.css';
 
 class Draft extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -26,19 +28,31 @@ class Draft extends React.Component {
     this.quote = 'Hello Michael An';
   }
 
-  handleClick() {
+  handleClick(e) {
+    // console.log(e.target);
     this.setState({
       activeTab: !this.state.activeTab
     });
   }
 
+  componentWillMount() {
+    console.log('test webpack and babel');
+    this.quote = {
+      name: 'Michale',
+      age: 20,
+      hobby: 'coding'
+    };
+  }
+
   render() {
+    // console.log(this.quote);
+    let { name, age, hobby } = this.quote;
+    // console.log(name, age, hobby);
     return (
       <div className="test">
-      {
-        this.state.activeTab && <span>{this.quote}</span>
-      }
-      <button onClick={this.handleClick.bind(this)}>test</button>
+        <button onClick={this.handleClick.bind(this)}>test</button>
+        {this.state.activeTab && <span>{name}</span>}
+        <Comment/>
       </div>
     );
   }
