@@ -1,4 +1,5 @@
 import React from 'react';
+import Content from './content';
 import '../css/layout.css';
 
 class Comment extends React.Component {
@@ -18,7 +19,7 @@ class Comment extends React.Component {
   render() {
     return (
       <div className="comment">
-        <span>This is comment Component</span>
+        <Content/>
         <input value={this.state.comment} onChange={(event) => this.handleChange(event)} type="text"></input>
       </div>
     );

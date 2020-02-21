@@ -8,35 +8,8 @@ class Draft extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      draftContent: '',
-      draftOriginContent: '',
-      draftInfo: {},
-      isLoading: true,
-      isShowDiff: true,
-      showDiffTip: false,
       activeTab: true,
-      originRepoName: '',
-      isShowCommentDialog: false,
-      activeItem: null,
-      historyList: [],
-      showReviewerDialog: false,
-      reviewers: [],
-      inResizing: false,
-      rightPartWidth: 30,
-      freezePublish: false
     };
-    this.quote = 'Hello Michael An';
-  }
-
-  handleClick(e) {
-    // console.log(e.target);
-    this.setState({
-      activeTab: !this.state.activeTab
-    });
-  }
-
-  componentWillMount() {
-    console.log('test webpack and babel');
     this.quote = {
       name: 'Michale',
       age: 20,
@@ -44,10 +17,21 @@ class Draft extends React.Component {
     };
   }
 
+  handleClick(e) {
+    this.setState({ activeTab: !this.state.activeTab });
+  }
+
+  componentWillMount() {
+    console.log('component will mount');
+  }
+
+  componentDidMount() {
+    console.log('component did mount');
+  }
+
   render() {
-    // console.log(this.quote);
-    let { name, age, hobby } = this.quote;
-    // console.log(name, age, hobby);
+    console.log('render');
+    let { name } = this.quote;
     return (
       <div className="test">
         <button onClick={this.handleClick.bind(this)}>test</button>
@@ -58,7 +42,4 @@ class Draft extends React.Component {
   }
 }
 
-ReactDOM.render (
-  <Draft />,
-  document.getElementById('wrapper')
-);
+ReactDOM.render(<Draft />, document.getElementById('wrapper'));
