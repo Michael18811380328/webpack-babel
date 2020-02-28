@@ -65,7 +65,11 @@ module.exports = {
   }
   // 加载器：对于css结尾的文件使用 style-loader || css-loader 处理，对于 js 文件使用后面的处理，排除掉node_nodules 下面的文件。
 }
-~~~
+~~~ 
+
+
+
+
 
 babel 配置
 
@@ -116,3 +120,16 @@ postdist:
 .PHONY: transpile postdist clean
 ~~~
 
+注意：如果是nodeJS项目，webpack 可能出现下面的问题
+
+~~~bash
+ERROR in ./dist/xxx.js
+Module not found: Error: Can't resolve 'fs' in '/Users/xxx'
+ @ ./dist/xxx.js 8:33-46
+~~~
+
+需要在 webpack-config.js 中加入 `target:'node',` 这个配置，否则node部分本地打包报错。
+
+https://stackoverflow.com/questions/51946848/webpack-nodejs-module-not-found-error-cant-resolve-fs
+
+https://jlongster.com/Backend-Apps-with-Webpack--Part-I
