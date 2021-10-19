@@ -5,8 +5,10 @@
 这篇文章我们主要讲解如何使用TS与已经使用React以及webpack的项目结合使用。
 
 ## 正文
+
 ## 初始化项目结构
-首先我们新建一个名字为myTsProj的文件夹，命令如下：
+
+首先我们新建一个名字为myTsProj的文件夹（这里使用 demo-04），命令如下：
 ```bash
 mkdir myTsProj
 cd myTsProj
@@ -42,7 +44,7 @@ npm init
 1、要确保我们有安装webpack,如果没有安装，执行下面的命令：
 
 ```bash
-npm install -g webpack
+npm install -D webpack webpack-cli
 ```
 Webpack可以将所有代码和可选择地将依赖捆绑成一个单独的.js文件
 
@@ -51,15 +53,22 @@ Webpack可以将所有代码和可选择地将依赖捆绑成一个单独的.js�
 ```bash
 npm install --save react react-dom @types/react @types/react-dom
 ```
-（说明： 这个命令使用@types/前缀表示要额外获取React和React-DOM的声明文件。 通常导入像 "react"这样的路径，它会查看react包； 然而，并不是所有的包都包含了声明文件，所以TS还会查看 @types/react包。 之后将不必在意这些了。）
-3、最后，我们要添加开发时依赖awesome-typescript-loader和source-map-loader。
+（说明： 这个命令使用 @types/前缀 表示要额外获取 React 和 React-DOM 的声明文件。 通常导入像 "react"这样的路径，它会查看react包； 然而，并不是所有的包都包含了声明文件，所以TS还会查看 @types/react包。 之后将不必在意这些了。）
+
+3、最后，我们要添加开发时依赖 awesome-typescript-loader 和 source-map-loader 。
 
 ```bash
 npm install --save-dev typescript awesome-typescript-loader source-map-loader
 ```
-（说明：awesome-typescript-loader可以让Webpack使用TypeScript的标准配置文件 tsconfig.json编译TypeScript代码。 source-map-loader使用TypeScript输出的sourcemap文件来告诉webpack何时生成 自己的sourcemaps。 这就允许我们在调试最终生成的文件时就好像在调试TypeScript源码一样。）
+Loader说明：
+
+awesome-typescript-loader 可以让 Webpack 使用 TypeScript 的标准配置文件 tsconfig.json 编译 TypeScript 代码。
+
+source-map-loader使用 TypeScript 输出的 sourcemap 文件来告诉 webpack 何时生成自己的sourcemaps。 这就允许我们在调试最终生成的文件时就好像在调试TypeScript源码一样。
+
 ## 添加TypeScript配置文件
 我们想将我们写的源码和必要的TypeScript文件整合到一起，这就需要创建一个tsconfig.json文件。（包含了输入文件列表以及编译选项）
+
 在myTsProj的根目录下新建 tsconfig.json文件，里面配置如下：
 
 ```json
@@ -78,7 +87,7 @@ npm install --save-dev typescript awesome-typescript-loader source-map-loader
 }
 ```
 ## 编写代码
-首先在 src/components目录下创建一个Demo.tsx的文件，代码如下：
+首先在 src/components目录下创建一个Demo.tsx 的文件，代码如下：
 ```jsx
 import * as React from "react";
 export interface DemoProps { 
@@ -95,7 +104,7 @@ export interface DemoProps { compiler: string; framework: string;}
 // State is never set so we use the '{}' type.
 export class Demo extends React.Component<DemoProps , {}> {
   render() {
-    <h1>Hello from {props.compiler} and {props.framework}!</h1>;
+    return (<h1>Hello from {this.props.compiler} and {this.props.framework}!</h1>);
   }
 }
 ```
@@ -105,7 +114,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Demo } from "./components/Demo";
 
-ReactDOM.render(<Demo compiler="TypeScript" framework="React" />, document.getElementById("app")
+ReactDOM.render(<Demo compiler="TypeScript" framework="React" />, document.getElementById("app"));
 ```
 <b>注意:  </b>
 我们仅仅将Demo组件导入index.tsx。 不同于 "react"或"react-dom"，我们使用Demo.tsx的相对路径 - 这很重要。 如果不这样做，TypeScript只会尝试在 node_modules文件夹里查找。
@@ -132,6 +141,7 @@ ReactDOM.render(<Demo compiler="TypeScript" framework="React" />, document.getEl
 ## 创建webpack配置文件
 做到这里，我们还差最后一步。
 在myTsProj根目录下创建webpack.config.js文件，代码如下：
+
 ```json
 module.exports = {
   entry: "./src/index.tsx",
@@ -177,8 +187,20 @@ webpack允许我们使用通过这种方式写的代码库。 通过我们的设
 ```
 webpack
 ```
-在浏览器里打开index.html，应该已经可以用了！ 你可以看到页面上显示着:
-“Hello from TypeScript and React!”
+在浏览器里打开index.html，应该已经可以用了！ 你可以看到页面上显示着: “Hello from TypeScript and React!”
 
 相信大家对TS已经有一定了解了，可以到官网深入学习TS了。[官网链接](https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter)
 
+## Michael 笔记
+
+已实现
+- 执行 npx webpack 可以把 src 下面的 ts 打包到 dist 下面的 js, 然后手动打开根目录下面的 index.html 即可打开界面
+
+存在的问题
+- npm start 打开 webpack-dev-server 本地服务器，更新代码后，可以热更新，但是界面不会自动渲染：原因：webpack-dev-server 会把编译后的文件直接放在内存中，而不是放在当前的目录下面，所以代码更新后，刷新界面，HTML 引用的还是旧的 dist 目录下面的 js，内容不会变化（可以把引用路径改一下 `<script src="/bundle.js"></script>` ）。稍后把 html 移动到 dist 下面，这样实时打开的 bundle 就是正常的。——已经解决
+
+- html 在更目录显示，并不是在 dist 下面显示，最好使用 html-webpack-plugin 插件处理一下: 现在会新建一个 HTML，无法把已有的 HTML 移动到 dist 目录下面
+或者应该直接把 react 和 react-dom 打包进入 bundle.js 中，这样避免 HTML 再次引入问题。——已经解决
+
+- HTML 中还手动引入 react react-dom 这个应该可以自动实现打包
+- 代码中关键的配置，应该自己走一遍，写一下注释
