@@ -24,6 +24,7 @@ cd ..
 ```
 
 Webpack会帮助我们生成dist目录。经webpack处理，会生成bundle.js文件放在dist目录下。
+
 最后看到的文件如下：
 
 ```
@@ -34,7 +35,7 @@ proj/
 ```
 
 ## 初始化工程
-安装,使用默认值就可以了。也可以在生成的 package.json文件里修改。
+安装，使用默认值就可以了，也可以在生成的 package.json文件里修改。
 
 ```
 npm init
@@ -99,7 +100,12 @@ export const Demo = (props: DemoProps) => <h1>Hello from {props.compiler} and {p
 这个例子使用了无状态的功能组件，我们可以让它更像一点类。
 ```jsx
 import * as React from "react";
-export interface DemoProps { compiler: string; framework: string;}
+
+export interface DemoProps {
+  compiler: string;
+  framework: string;
+}
+
 // 'DemoProps ' describes the shape of props.
 // State is never set so we use the '{}' type.
 export class Demo extends React.Component<DemoProps , {}> {
@@ -116,8 +122,9 @@ import { Demo } from "./components/Demo";
 
 ReactDOM.render(<Demo compiler="TypeScript" framework="React" />, document.getElementById("app"));
 ```
-<b>注意:  </b>
+注意: 
 我们仅仅将Demo组件导入index.tsx。 不同于 "react"或"react-dom"，我们使用Demo.tsx的相对路径 - 这很重要。 如果不这样做，TypeScript只会尝试在 node_modules文件夹里查找。
+
 我们还缺一个页面来显示Demo组件。 在myTsProj根目录创建一个名为index.html的文件，代码如下：
 
 ```html
@@ -196,11 +203,10 @@ webpack
 已实现
 - 执行 npx webpack 可以把 src 下面的 ts 打包到 dist 下面的 js, 然后手动打开根目录下面的 index.html 即可打开界面
 
-存在的问题
 - npm start 打开 webpack-dev-server 本地服务器，更新代码后，可以热更新，但是界面不会自动渲染：原因：webpack-dev-server 会把编译后的文件直接放在内存中，而不是放在当前的目录下面，所以代码更新后，刷新界面，HTML 引用的还是旧的 dist 目录下面的 js，内容不会变化（可以把引用路径改一下 `<script src="/bundle.js"></script>` ）。稍后把 html 移动到 dist 下面，这样实时打开的 bundle 就是正常的。——已经解决
-
-- html 在更目录显示，并不是在 dist 下面显示，最好使用 html-webpack-plugin 插件处理一下: 现在会新建一个 HTML，无法把已有的 HTML 移动到 dist 目录下面
-或者应该直接把 react 和 react-dom 打包进入 bundle.js 中，这样避免 HTML 再次引入问题。——已经解决
-
-- HTML 中还手动引入 react react-dom 这个应该可以自动实现打包
+- html 在根目录显示，并不是在 dist 下面显示，最好使用 html-webpack-plugin 插件处理一下，把 src 中的模板直接拷贝到 dist 打包目录下面，然后自动插入打包后的 bundle.js ，这样避免 HTML 再次引入问题。——已经解决
 - 代码中关键的配置，应该自己走一遍，写一下注释
+
+存在的问题
+
+- HTML 中还手动引入 react react-dom 这个应该可以自动实现打包——这里需要 babel 处理等
