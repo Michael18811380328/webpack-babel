@@ -1,13 +1,5 @@
 # 前端工程化
 
-实现前端工程化
+本项目用于测试前端工程化工具，包括常用的 webpack rollup rspack babel 等工具。
 
-
-## demo-01
-
-使用 react ES6 的语法完成基本文件，使用 babel 和 webpack 直接进行编译
-
-
-## demo-02 
-
-使用 react 的 loaders： react-create-app 完成项目的编译和打包，并学习打包脚本原理
+注意第三方库的大版本号，早期废弃的应该淘汰。

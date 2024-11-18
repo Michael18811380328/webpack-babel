@@ -1,6 +1,6 @@
 # 配置说明
 
-### 第三方依赖版本（dtable+editor）
+### 第三方依赖版本
 
 
 ~~~json
@@ -146,7 +146,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "../dist/"),
-    filename: 'seafile-dtable.js',
+    filename: 'result.js',
     libraryTarget: 'umd',
     libraryExport: 'default',
     umdNamedDefine: true,

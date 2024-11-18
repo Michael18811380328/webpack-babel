@@ -7,7 +7,7 @@
 ~~~bash
 npm run eject
 
-> demo-02@0.1.0 eject /Users/seafile/Desktop/webpack-babel/demo-02
+> demo-02@0.1.0 eject /Users/Desktop/webpack-babel/demo-02
 > react-scripts eject
 
 NOTE: Create React App 2+ supports TypeScript, Sass, CSS Modules and more without ejecting: https://reactjs.org/blog/2018/10/01/create-react-app-v2.html
@@ -15,7 +15,7 @@ NOTE: Create React App 2+ supports TypeScript, Sass, CSS Modules and more withou
 ? Are you sure you want to eject? This action is permanent. Yes
 Ejecting...
 
-Copying files into /Users/seafile/Desktop/webpack-babel/demo-02
+Copying files into /Users/Desktop/webpack-babel/demo-02
   Adding /config/env.js to the project
   Adding /config/getHttpsConfig.js to the project
   Adding /config/modules.js to the project

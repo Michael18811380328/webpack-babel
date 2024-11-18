@@ -20,7 +20,7 @@ npx create-create-app demo-03
 ~~~
 
 ~~~bash
-Success! Created demo-03 at /Users/seafile/Desktop/webpack-babel/demo-03
+Success! Created demo-03 at /Users/Desktop/webpack-babel/demo-03
 Inside that directory, you can run several commands:
 
   yarn start
