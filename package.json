@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "move": "rm -rf ../Michael18811380328.github.io/site/webpack/site && cp -r ./doc_build ../Michael18811380328.github.io/site/webpack/site",
+    "dev": "rspress dev",
+    "build": "rspress build",
+    "preview": "rspress preview"
+  },
+  "devDependencies": {
+    "rspress": "^1.38.0"
+  }
+}
