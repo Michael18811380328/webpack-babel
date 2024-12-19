@@ -4,19 +4,26 @@ export default defineConfig({
   root: 'docs',
   title: '前端工程化',
   description: '介绍前端工程化常用工具',
+  // set and base builderConfig in server, more info: https://rspress.dev/zh/guide/basic/deploy
+  base: '/site/webpack/site',
+  builderConfig: {
+    output: {
+      assetPrefix: '/site/webpack/site'
+    }
+  },
   themeConfig: {
     nav: [
       { text: '首页', link: '/' },
       { 
         text: 'rollup',
-        link: '/rollup/28-rollup ',
+        link: '/rollup/28-rollup完全入门指南',
         items: [
           { text: 'Demo 01 Note', link: '/rollup/demo01-note' },
           { text: 'Demo 02 Note', link: '/rollup/demo02-note' },
           { text: 'Demo 03 Note', link: '/rollup/demo03-note' },
           { text: 'Demo 04 Note', link: '/rollup/demo04-note' },
-          { text: 'rollup ', link: '/rollup/28-rollup ' },
-          { text: 'rollup ', link: '/rollup/29-rollup ' },
+          { text: 'rollup ', link: 'rollup/28-rollup完全入门指南' },
+          { text: 'rollup ', link: 'rollup/29-rollup打包工具基础配置使用详解' },
         ]
       },
       { 
@@ -28,7 +35,7 @@ export default defineConfig({
           { text: '23-Babel-Configure', link: '/babel/23-Babel-Configure' },
           { text: '24-Babel-Learn ES2015', link: '/babel/24-Babel-Learn ES2015' },
           { text: '25-babel-preset-env使用指南', link: '/babel/25-babel-preset-env' },
-          { text: '26-babel-preset-env 作用', link: '/babel/26-babel-preset-env 作用' },
+          { text: '26-babel-preset-env 作用', link: '/babel/26-babel-preset-env作用' },
           { text: '27-babel-plugin-transform-runtime 说明', link: '/babel/27-babel-plugin-transform-runtime 说明' },
         ]
       },
