@@ -1,4 +1,56 @@
-# 04 插件
+# 代码案例说明
+
+## demo01 单文件编译
+
+```bash
+rollup 入口文件 --file 输出文件 --format 输出格式
+```
+
+常用输出格式分为三种：iife cjs umd，表示浏览器环境，node 环境，两者都支持的环境
+
+全部格式："amd", "cjs", "system", "es", "iife" or "umd".
+
+第一个测试文件中，包括了这三个打包的方式，可以查看具体的打包结果
+
+## demo03 多文件编译
+
+多入口多出口文件的配置
+
+~~~js
+export default [
+  {
+    input: './index2.js',
+    output: {
+      file: 'bundle.js',
+      format: 'cjs'
+    }
+  },
+  {
+    input: './index.js',
+    output: [
+      {
+        file: 'bundle-cjs.js',
+        format: 'cjs'
+      },
+      {
+        file: 'bundle-es.js',
+        format: 'es'
+      },
+      {
+        file: 'bundle-umd.js',
+        format: 'umd'
+      },
+      {
+        file: 'bundle-iime.js',
+        format: 'iife'
+      },
+    ]
+  },
+];
+
+~~~
+
+## demo 04 插件
 
 插件的配置：先安装，然后在配置文件中导入和使用
 
@@ -52,8 +104,6 @@ export default {
 };
 ```
 
-
-## 其他选项
+### 其他选项
 
 其他的选项参考：https://www.rollupjs.com/guide/big-list-of-options
-

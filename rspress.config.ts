@@ -41,9 +41,8 @@ export default defineConfig({
       },
       {
         text: 'webpack',
-        link: '/webpack/00-readme',
+        link: '/webpack/01-webpack基本概念',
         items: [
-          { text: '00-readme', link: '/webpack/00-readme' },
           { text: '01-webpack基本概念', link: '/webpack/01-webpack基本概念' },
           { text: '02-create-react-app入门教程', link: '/webpack/02-create-react-app入门教程' },
           { text: '03-网易webpack配置解析', link: '/webpack/03-网易webpack配置解析' },

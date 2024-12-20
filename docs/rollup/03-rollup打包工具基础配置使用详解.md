@@ -7,13 +7,13 @@
 
 ### 前言
 
-**Rollup官方解析：** Rollup 是一个 JavaScript 模块打包器，可以将小块代码编译成大块复杂的代码，例如 library（库） 或应用程序
+Rollup官方解析： Rollup 是一个 JavaScript 模块打包器，可以将小块代码编译成大块复杂的代码，例如 library（库） 或应用程序
 
-**webpack官方解析：** webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。(webpack存在大量引导代码和模块函数)
+webpack官方解析： webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。(webpack存在大量引导代码和模块函数)
 
 > vue框架源码是使用Rollup进行打包的，而且rollup和webpack相比更适用于框架的开发，打包后的代码可读性更高。
 
-**使用Rollup的开源项目：** - vue - vuex - vue-router
+使用Rollup的开源项目： - vue - vuex - vue-router
 
 使用webpack的项目： - ElementUI - mint-ui - vue-cli
 
@@ -184,7 +184,7 @@ export default {
 }
 ```
 
-**main.js 源文件代码**
+main.js 源文件代码
 
 ```js
 import answer from 'the-answer';
@@ -192,7 +192,7 @@ import answer from 'the-answer';
 console.log('answer', answer)
 ```
 
-**未保持外部引入打包后代码**
+未保持外部引入打包后代码
 
 ```js
 var index = 42;
@@ -200,7 +200,7 @@ var index = 42;
 console.log('answer', index);
 ```
 
-**保持外部引入打包后代码**
+保持外部引入打包后代码
 
 ```js
 import answer from 'the-answer';
@@ -245,7 +245,7 @@ export default {
 }
 ```
 
-**使用第三方库 lodash**
+使用第三方库 lodash
 
 ```js
 // npm install lodash
@@ -258,7 +258,7 @@ console.log(_.concat([1, 2], 3, [4, 5]));
 
 > 执行npm run build 后会看到打包后的文件多了很多内容，这些代码就是ladash的代码，被打包整合进来了。
 
-**补充**
+补充
 
 如果不想第三方库被打包进来，而可以在外面引入，配合使用的话，可以在`rollup.config.js`中配置 `external: ['lodash']`。
 
@@ -280,7 +280,7 @@ import { fileURLToPath } from 'url';
 // __filename包含当前模块文件的绝对路径
 const __filename = fileURLToPath(import.meta.url);
 
-/**
+/
 内部变量:
 
 ES6 模块应该是通用的，同一个模块不用修改，就可以用在浏览器环境和服务器环境。为了达到这个目标，Node.js 规定 ES6 模块之中不能使用 CommonJS 模块的特有的一些内部变量。
@@ -461,7 +461,7 @@ import eslint from "@rollup/plugin-eslint";
 export default {
   plugins: [
     eslint({
-      include: ['src/**/*.js'] // 需要检查的部分
+      include: ['src//*.js'] // 需要检查的部分
     })
   ],
 }
@@ -531,7 +531,7 @@ npm install -D cross-env
 }
 ```
 
-**根据环境配置插件**
+根据环境配置插件
 
 ```js
 const NODE_ENV = process.env.NODE_ENV; // 环境变量
