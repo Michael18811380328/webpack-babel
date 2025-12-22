@@ -10,7 +10,7 @@
   "keywords": [
     "webpack-typescript-react"
   ],
-  "author": "MichaelAn",
+  "author": "Michael",
   "license": "ISC",
   "devDependencies": {
     "@types/react": "^17.0.30",

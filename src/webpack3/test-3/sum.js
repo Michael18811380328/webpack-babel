@@ -1,3 +1,3 @@
 // sum.js for test
-module.exports = "hello Anbing";
+module.exports = "hello webpack";
 
