@@ -1,13 +1,27 @@
 # 前端工程化
 
-本目录为 webpack 等打包构建工具介绍，以及个人笔记总结。
+这里整理了前端工程化相关的笔记、踩坑记录和工具使用总结，主要覆盖构建工具、包管理和常见配置。
 
-webpack 官方链接：https://www.webpackjs.com/
+## 快速入口
 
-Rollup 官方链接：https://www.rollupjs.com/
+- [Babel](/babel/01-Babel%20is%20what)
+- [Git / npm / npx / yalc](/git/BUG-Auto%20packing%20the%20repository%20in%20background%20for%20optimum%20performance)
+- [Mkdocs / GitBook](/mkdocs/Mkdocs-github-blog)
+- [Rollup](/rollup/01-rollup个人笔记)
+- [Vite](/vite/Vite-setting)
+- [Webpack](/webpack/01-webpack基本概念)
+- [Webpack Plugins](/webpack-plugins/webpack-setting)
 
-bable 官方链接：https://www.babeljs.cn/
+## 官方链接
 
-代码案例链接：https://github.com/Michael18811380328/webpack-babel
+- Webpack 官方链接：https://www.webpackjs.com/
+- Rollup 官方链接：https://www.rollupjs.com/
+- Babel 官方链接：https://www.babeljs.cn/
 
-注意：构建工具不同版本配置不同，需要根据实际项目版本号使用。
+## 代码仓库
+
+- 仓库地址：https://github.com/Michael18811380328/webpack-babel
+
+## 说明
+
+构建工具不同版本的配置差异很大，查看文章时请留意对应版本号和发布年份。
