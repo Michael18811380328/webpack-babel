@@ -1,0 +1,26 @@
+name: Deploy Static HTML to Pages
+
+on:
+  push:
+    branches: [ master, main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get codes
+        uses: actions/checkout@v4
+
+      - name: upload static html source codes
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "./dist"
+
+      - name: deploy GitHub Pages
+        uses: actions/deploy-pages@v4
